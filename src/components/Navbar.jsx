@@ -5,20 +5,20 @@ function Navbar() {
   const { isAuthenticated, logout, user } = useAuth();
 
   return (
-    <nav className=" bg-zinc-700 my-3 flex justify-between py-5 px-10 rounded-md">
+    <nav className=" bg-zinc-700 my-3 flex justify-between py-5 px-4 rounded-md">
       <Link to={
         isAuthenticated ? "/mysamples" : "/"
       }>
         <h1 className=" text-2xl font-bold"> Muestras Laboratorio</h1>
       </Link>
-      <ul className="flex gap-x-2">
+      <ul className="flex gap-x-2 items-center">
         {isAuthenticated ? (
           <>
-            <li>Bienvenido {user.username}</li>
+            <li className="hidden md:block">Bienvenido {user.username}</li>
             <li>
               <Link to="/add-sample"
               className=" bg-indigo-500 px-4 py-1 rounded-sm flex"
-              > Clasificar muestra</Link>
+              > Clasificar</Link>
             </li>
             <li>
               <Link
