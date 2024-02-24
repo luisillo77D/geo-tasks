@@ -62,9 +62,16 @@ function SampleFormPage() {
             {...register("description")}
             className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md"
           />
+          <div className="flex justify-between">
+          <button className="bg-red-500 py-2 px-3 rounded-md" onClick={() => {
+            navigate(-1);
+          }}>
+            Cancelar
+          </button>
           <button className=" bg-indigo-500 py-2 px-3 rounded-md">
             Guardar
           </button>
+          </div>
         </form>
       </div>
     </div>
