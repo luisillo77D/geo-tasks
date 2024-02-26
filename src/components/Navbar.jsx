@@ -9,7 +9,7 @@ function Navbar() {
       <Link to={
         isAuthenticated ? "/mysamples" : "/"
       }>
-        <h1 className=" text-2xl font-bold"> Muestras Laboratorio</h1>
+        <h1 className=" text-2xl font-bold">Laboratorio</h1>
       </Link>
       <ul className="flex gap-x-2 items-center">
         {isAuthenticated ? (
