@@ -16,7 +16,7 @@ function SamplesPage() {
 
   if(samples.length === 0) return (<h1>No tienes Muestras pendientes</h1>)
   return (
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-2">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5  gap-2">
      {
     samples.map(sample =>(
       <SampleCard sample={sample} key={sample._id}/>

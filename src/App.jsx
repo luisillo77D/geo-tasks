@@ -11,18 +11,25 @@ import AdminRoute from "./AdminRoute";
 import { SampleProvider } from "./context/SamplesContext";
 import Navbar from "./components/Navbar";
 import Lateralbar from "./components/Lateralbar";
+import { useState } from "react";
 
 function App() {
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+  };
+
   return (
     <AuthProvider>
       <SampleProvider>
         <BrowserRouter>
-          <div className=" flex gap-10 mx-auto px-0 sm:pr-10">
-            <Lateralbar />
-            <div className="flex flex-col w-full md:w-11/12">
-              <Navbar />
-              <div className="flex gap-20">
-                <div className="flex-1">
+          <div className="gap-10 mx-auto px-0 sm:pr-10 h-screen">
+            <Navbar toggleSidebar={toggleSidebar} />
+            <div className="flex w-full h-5/6 justify-between">
+              {showSidebar && <Lateralbar />}
+              <div className={`w-full ${showSidebar ? 'ml-10' : ''}`}>
+                <div className="flex justify-center mt-3">
                   <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />
@@ -35,8 +42,14 @@ function App() {
                           element={<h1>samples page admin</h1>}
                         />
                       </Route>
-                      <Route path="/add-sample" element={<SampleFormPage />} />
-                      <Route path="/samples/:id" element={<SampleFormPage />} />
+                      <Route
+                        path="/add-sample"
+                        element={<SampleFormPage />}
+                      />
+                      <Route
+                        path="/samples/:id"
+                        element={<SampleFormPage />}
+                      />
                       <Route path="/profile" element={<ProfilePage />} />
                     </Route>
                   </Routes>

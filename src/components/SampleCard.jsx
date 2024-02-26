@@ -24,42 +24,45 @@ function SampleCard({ sample }) {
       <div className=" flex gap-x-2 items-center">
         {user.role ? (
           <>
-            {showModal ? (
-              <div className="fixed inset-0 flex items-center justify-center z-50">
-                <div className="bg-zinc-700 p-4 rounded-md">
-                  <p>¿Estás seguro de que deseas eliminar este elemento?</p>
-                  <div className="flex justify-end mt-4">
-                    <button
-                      className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md mr-2"
-                      onClick={handleDelete}
-                    >
-                      Eliminar
-                    </button>
-                    <button
-                      className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md"
-                      onClick={() => setShowModal(false)}
-                    >
-                      Cancelar
-                    </button>
+            {showModal &&(
+              <>
+                <div className="fixed inset-0 flex items-center justify-center z-50">
+                  <div className="bg-zinc-700 p-4 rounded-md">
+                    <p>
+                      ¿Estás seguro de que deseas eliminar este elemento?{" "}
+                      {sample.title}
+                    </p>
+                    <div className="flex justify-end mt-4">
+                      <button
+                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md mr-2"
+                        onClick={handleDelete}
+                      >
+                        Eliminar
+                      </button>
+                      <button
+                        className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md"
+                        onClick={() => setShowModal(false)}
+                      >
+                        Cancelar
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <>
-                <button
-                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-                  onClick={() => setShowModal(true)}
-                >
-                  Eliminar
-                </button>
-                <Link
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
-                  to={`/samples/${sample._id}`}
-                >
-                  Editar
-                </Link>
+                <div className="fixed inset-0 bg-black bg-opacity-80 z-40"></div>
               </>
             )}
+            <button
+              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
+              onClick={() => setShowModal(true)}
+            >
+              Eliminar
+            </button>
+            <Link
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+              to={`/samples/${sample._id}`}
+            >
+              Editar
+            </Link>
           </>
         ) : (
           <>
