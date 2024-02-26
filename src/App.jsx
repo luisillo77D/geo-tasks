@@ -17,7 +17,7 @@ function App() {
     <AuthProvider>
       <SampleProvider>
         <BrowserRouter>
-          <div className=" flex gap-10 mx-auto px-0 sm:px-10">
+          <div className=" flex gap-10 mx-auto px-0 sm:pr-10">
             <Lateralbar />
             <div className="flex flex-col w-full md:w-11/12">
               <Navbar />
