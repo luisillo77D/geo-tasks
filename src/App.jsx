@@ -12,6 +12,7 @@ import { SampleProvider } from "./context/SamplesContext";
 import Navbar from "./components/Navbar";
 import Lateralbar from "./components/Lateralbar";
 import { useState } from "react";
+import Mapa from "./pages/mapa";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -50,7 +51,7 @@ function App() {
                         path="/samples/:id"
                         element={<SampleFormPage />}
                       />
-                      <Route path="/profile" element={<ProfilePage />} />
+                      <Route path="/profile" element={<Mapa  />} />
                     </Route>
                   </Routes>
                 </div>

@@ -1,13 +1,17 @@
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSamples } from "../context/SamplesContext";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import Mapa from "./mapa";
 
 function SampleFormPage() {
   const { register, handleSubmit, setValue } = useForm();
   const { samples, createSample, getSample, updateSample } = useSamples();
   const navigate = useNavigate();
   const params = useParams();
+
+  // Estado para almacenar las coordenadas seleccionadas
+  const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
 
   useEffect(() => {
     async function loadSample() {
@@ -22,10 +26,18 @@ function SampleFormPage() {
   }, []);
 
   const onSubmit = handleSubmit((data) => {
+    // Incluye las coordenadas en el objeto sample antes de enviar
+    console.log(coordinates.lat);
+    const sampleData = {
+      ...data,
+      latitude: parseFloat(coordinates.lat),
+      longitude: parseFloat(coordinates.lng)
+    };
     if (params.id) {
-      updateSample(params.id, data);
+      updateSample(params.id, sampleData);
     } else {
-      createSample(data);
+      console.log(sampleData);
+      createSample(sampleData);
     }
     navigate("/mysamples");
   });
@@ -62,17 +74,23 @@ function SampleFormPage() {
             {...register("description")}
             className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md"
           />
+          {/* Campos ocultos para latitud y longitud */}
+          <input type="hidden" {...register("latitude")} value={coordinates.lat} />
+          <input type="hidden" {...register("longitude")} value={coordinates.lng} />
+
           <div className="flex justify-between">
-          <button className="bg-red-500 py-2 px-3 rounded-md" onClick={() => {
-            navigate(-1);
-          }}>
-            Cancelar
-          </button>
-          <button className=" bg-indigo-500 py-2 px-3 rounded-md">
-            Guardar
-          </button>
+            <button
+              className="bg-red-500 py-2 px-3 rounded-md"
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              Cancelar
+            </button>
+            <button className=" bg-indigo-500 py-2 px-3 rounded-md">Guardar</button>
           </div>
         </form>
+        <Mapa setCoordinates={setCoordinates} />
       </div>
     </div>
   );
