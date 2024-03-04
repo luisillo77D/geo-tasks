@@ -12,7 +12,8 @@ import { SampleProvider } from "./context/SamplesContext";
 import Navbar from "./components/Navbar";
 import Lateralbar from "./components/Lateralbar";
 import { useState } from "react";
-import Mapa from "./pages/mapa";
+import Mapa from "./components/mapa";
+import SamplesOkPage from "./pages/SamplesOkPage";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -35,6 +36,7 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
+                    <Route path="/colection" element={<SamplesOkPage />} />
                     <Route element={<ProtectedRoute />}>
                       <Route path="/mysamples" element={<SamplesPage />} />
                       <Route element={<AdminRoute />}>

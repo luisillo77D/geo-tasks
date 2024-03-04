@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSamples } from "../context/SamplesContext";
 import { useNavigate, useParams } from "react-router-dom";
-import Mapa from "./mapa";
+import Mapa from "../components/mapa";
 
 function SampleFormPage() {
   const { register, handleSubmit, setValue } = useForm();

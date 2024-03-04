@@ -18,7 +18,7 @@ function Mapa({ setCoordinates }) {
   };
 
   return (
-    <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: "400px", width: "100%" }}>
+    <MapContainer center={[29.3133518,-110.4747407]} zoom={6.75} style={{ height: "400px", width: "100%" }}>
       <TileLayer
         url="https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={API_KEY}"
         attribution='&copy; <a href="http://www.thunderforest.com/">Thunderforest</a> contributors'

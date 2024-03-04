@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function SampleCard({ sample }) {
   const { user } = useAuth();
-  const { deleteSample } = useSamples();
+  const { deleteSample, createSampleOk } = useSamples();
   const [showModal, setShowModal] = useState(false);
 
   const handleDelete = () => {
@@ -24,7 +24,7 @@ function SampleCard({ sample }) {
       <div className=" flex gap-x-2 items-center">
         {user.role ? (
           <>
-            {showModal &&(
+            {showModal && (
               <>
                 <div className="fixed inset-0 flex items-center justify-center z-50">
                   <div className="bg-zinc-700 p-4 rounded-md">
@@ -57,12 +57,22 @@ function SampleCard({ sample }) {
             >
               Eliminar
             </button>
-            <Link
+            <button
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
-              to={`/samples/${sample._id}`}
+              //usamos el metodo createSampleOk y el deletesample dentro de un try catch
+              onClick={async () => {
+                try {
+                  await createSampleOk(sample);
+                  deleteSample(sample._id);
+                  window.location.href = "/colection";
+
+                } catch (error) {
+                  console.log(error);
+                }
+              }}
             >
-              Editar
-            </Link>
+              Aceptar
+            </button>
           </>
         ) : (
           <>

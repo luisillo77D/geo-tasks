@@ -12,6 +12,7 @@ function Lateralbar() {
         {isAuthenticated ? (
           <>
             {/* Mostrar estos elementos solo si está autenticado */}
+            <Link className='py-3 bg-zinc-800 rounded-md' to="/colection">Coleccion</Link>
             <Link className='py-3 bg-zinc-800 rounded-md' to="/add-sample">Agregar muestra</Link>
             <Link className='py-3 bg-zinc-800 rounded-md' to="/mysamples">Mis muestras</Link>
             <Link className='py-3 bg-zinc-800 rounded-md' to="/profile">Perfil</Link>
