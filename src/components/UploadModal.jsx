@@ -12,15 +12,15 @@ function UploadModal() {
 
 const handleUpload = async () => {
     console.log(selectedImage);
-    const dat = new FormData();
-    dat.append('image', imageUrl);
+    const data = new FormData();
+    data.append('image', imageUrl);
     try {
         const response = await fetch(`https://api.imgbb.com/1/upload?key=7f1e580f1ff1e4f0317c841a7be1df8b&name=${imageUrl.name}`, {
             method: 'POST',
-            body: dat
+            body: data
         });
-        const data = await response.json();
-        console.log(data);
+        const resdata = await response.json();
+        console.log(resdata.data.url);
         // Handle the response from the API
     } catch (error) {
         console.error(error);
@@ -29,11 +29,11 @@ const handleUpload = async () => {
 };
 
   return (
-    <div className="w-full h-screen">
+    <div className="w-2/4 h-2/4">
       <input type="file" accept="image/*" onChange={handleImageChange} />
       {selectedImage && 
-      <div className="w-2/4 h-3/4">
-      <img src={selectedImage} alt="Selected" className="w-full h-full"/>
+      <div className="w-full h-full">
+      <img src={selectedImage} alt="Selected" className="w-2/4 h-2/4"/>
       </div>}
       <button onClick={handleUpload}>Upload</button>
     </div>

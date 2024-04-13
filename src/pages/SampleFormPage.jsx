@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useSamples } from "../context/SamplesContext";
 import { useNavigate, useParams } from "react-router-dom";
 import Mapa from "../components/mapa";
+import UploadModal from "../components/UploadModal";
 
 function SampleFormPage() {
   const { register, handleSubmit, setValue } = useForm();
@@ -43,8 +44,8 @@ function SampleFormPage() {
   });
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md my-2">
+    <div className="flex h-full justify-center gap-6">
+      <div className="bg-zinc-800 max-w-md w-2/4 p-10 rounded-md my-2">
         <form onSubmit={onSubmit}>
           <label htmlFor="title">Nombre</label>
           <input
@@ -77,7 +78,7 @@ function SampleFormPage() {
           {/* Campos ocultos para latitud y longitud */}
           <input type="hidden" {...register("latitude")} value={coordinates.lat} />
           <input type="hidden" {...register("longitude")} value={coordinates.lng} />
-
+          <Mapa setCoordinates={setCoordinates} />
           <div className="flex justify-between">
             <button
               className="bg-red-500 py-2 px-3 rounded-md"
@@ -90,8 +91,8 @@ function SampleFormPage() {
             <button className=" bg-indigo-500 py-2 px-3 rounded-md">Guardar</button>
           </div>
         </form>
-        <Mapa setCoordinates={setCoordinates} />
       </div>
+      <UploadModal/>
     </div>
   );
 }
