@@ -6,7 +6,7 @@ import Mapa from "../components/mapa";
 
 function SampleFormPage() {
   const { register, handleSubmit, setValue } = useForm();
-  const { samples, createSample, getSample, updateSample } = useSamples();
+  const { createSample, getSample, updateSample } = useSamples();
   const navigate = useNavigate();
   const params = useParams();
 

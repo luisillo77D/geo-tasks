@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 function Mapa({ setCoordinates }) {
   const [markerPosition, setMarkerPosition] = useState(null);
 
+  const initialPosition = { lat: 29.379933688073205, lng: -110.905272304 };
+  useEffect(() => {
+    setMarkerPosition(initialPosition);
+    setCoordinates(initialPosition);
+  }, []);
+
   const handleClick = (e) => {
     setMarkerPosition(e.latlng);
     setCoordinates(e.latlng); // Envía las coordenadas al formulario
+    console.log(e.latlng);
   };
 
   const MapClickHandler = () => {
@@ -18,7 +25,7 @@ function Mapa({ setCoordinates }) {
   };
 
   return (
-    <MapContainer center={[29.3133518,-110.4747407]} zoom={6.75} style={{ height: "400px", width: "100%" }}>
+    <MapContainer center={[initialPosition.lat,initialPosition.lng]} zoom={8.75} style={{ height: "400px", width: "100%" }}>
       <TileLayer
         url="https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={API_KEY}"
         attribution='&copy; <a href="http://www.thunderforest.com/">Thunderforest</a> contributors'
