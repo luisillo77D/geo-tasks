@@ -1,7 +1,11 @@
-
+import UploadModal from "../components/UploadModal"
 function ProfilePage() {
   return (
-    <div>ProfilePage</div>
+    
+      <UploadModal>
+
+      </UploadModal>
+   
   )
 }
 

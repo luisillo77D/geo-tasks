@@ -53,7 +53,7 @@ function App() {
                         path="/samples/:id"
                         element={<SampleFormPage />}
                       />
-                      <Route path="/profile" element={<Mapa  />} />
+                      <Route path="/profile" element={<ProfilePage/>} />
                     </Route>
                   </Routes>
                 </div>

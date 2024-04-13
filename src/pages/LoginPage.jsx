@@ -11,8 +11,8 @@ function LoginPage() {
   const { signin, errors: signinErrors, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  const onSubmit = handleSubmit((data) => {
-    signin(data);
+  const onSubmit = handleSubmit(async (data) => {
+    await signin(data);
   });
 
   useEffect(() => {
