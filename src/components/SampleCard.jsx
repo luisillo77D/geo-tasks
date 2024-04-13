@@ -63,8 +63,8 @@ function SampleCard({ sample }) {
               onClick={async () => {
                 try {
                   await createSampleOk(sample);
-                  deleteSample(sample._id);
-                  window.location.href = "/colection";
+                  await deleteSample(sample._id);
+                  
 
                 } catch (error) {
                   console.log(error);

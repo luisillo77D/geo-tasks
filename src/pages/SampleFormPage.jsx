@@ -25,7 +25,7 @@ function SampleFormPage() {
     loadSample();
   }, []);
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit(async (data) => {
     // Incluye las coordenadas en el objeto sample antes de enviar
     console.log(coordinates.lat);
     const sampleData = {
@@ -37,7 +37,7 @@ function SampleFormPage() {
       updateSample(params.id, sampleData);
     } else {
       console.log(sampleData);
-      createSample(sampleData);
+      await createSample(sampleData);
     }
     navigate("/mysamples");
   });
